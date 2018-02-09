@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>Friend Finder Survey
+	</title>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+
+
+
+</head>
+
+<body>
+
+	<h3>About You</h3>
+	<h4>Name</h4>
+	<input type="text" name="" id="name" class="form-control">
+
+	<p>How much do you agree with each statement on a scale of 1 to 5?
+	</p>
+
+	<p>
+		You are a messy person.
+		<select class="chosen-select" id="q1">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+
+	</p>
+
+	<p>
+		You like eating healthy.
+		<select class="chosen-select" id="q2">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You'd rather read a book than work on your car.
+		<select class="chosen-select" id="q3">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You'd rather meet with people at a cafe than a nightclub.
+		<select class="chosen-select" id="q4">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You like watching sporting events more than drama shows.
+		<select class="chosen-select" id="q5">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You like to play your music loud.
+		<select class="chosen-select" id="q6">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You have a passion for computers.
+		<select class="chosen-select" id="q7">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You like having structure in your life.
+		<select class="chosen-select" id="q8">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You consider yourself an introvert (1) or extrovert (5).
+		<select class="chosen-select" id="q9">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+	<p>
+		You consider yourself left-brain (1) or right-brain (5) dominant.
+		<select class="chosen-select" id="q10">
+			<option value=""> </option>
+			<option value="1">1 (Strongly disagree)</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5 (Strongly agree)</option>
+		</select>
+	</p>
+
+<button type="submit" id="submit">Submit Answers</button>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+
+
+$("#submit").on("click",function(event) {
+		var userData = {
+			name: $("#name").val(),
+			scores: [
+				$("#q1").val(),
+				$("#q2").val(),
+				$("#q3").val(),
+				$("#q4").val(),
+				$("#q5").val(),
+				$("#q6").val(),
+				$("#q7").val(),
+				$("#q8").val(),
+				$("#q9").val(),
+				$("#q10").val(),
+			]
+		};
+
+		var currentURL = "localhost:8080";
+
+		$.post(currentURL + "/api/friends", userData, function(data) {
+
+			alert("working");
+		})
+	});
+
+</script>
